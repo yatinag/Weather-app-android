@@ -84,7 +84,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            app:cardElevation="25dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -111,6 +111,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -134,7 +135,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            app:cardElevation="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -160,6 +161,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -209,6 +211,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -232,7 +235,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -258,6 +261,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -307,6 +311,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -330,7 +335,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            app:cardElevation="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -356,6 +361,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -379,7 +385,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="15dp">
+            app:cardElevation="25dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -405,6 +411,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_marginTop="10dp"
+                    app:srcCompat="@drawable/clear_day"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView

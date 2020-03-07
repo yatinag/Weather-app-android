@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM, dd");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd");
     private FusedLocationProviderClient fusedLocationClient;
     Geocoder geocoder;
     private RequestQueue mQueue;
