@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">mdb-weather-app</string>
+    <string name="app_name_label">Ultimate Weather App</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="fahrenheit">ºF</string>
+    <string name="celsius">ºC</string>
 </resources>
