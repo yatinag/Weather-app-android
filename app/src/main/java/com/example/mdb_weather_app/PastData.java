@@ -51,7 +51,7 @@ public class PastData extends AppCompatActivity {
     Geocoder geocoder;
     private RequestQueue mQueue;
     ImageView weatherImg;
-    boolean isFahren = true;
+    boolean isFahren = false;
     TextView currentTemp, currentLoc, currentDate;
     TextView currDesc;
     FlexboxLayout dataList;
@@ -99,9 +99,9 @@ public class PastData extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    isFahren = false;
-                } else {
                     isFahren = true;
+                } else {
+                    isFahren = false;
                 }
                 tempSwitch.setText(correctTempUnit());
                 dataList.removeAllViews();
@@ -117,7 +117,11 @@ public class PastData extends AppCompatActivity {
             }
         });
 
-        URL = "https://api.darksky.net/forecast/" + key + "/" + latitude + "," + longitude + "," + dateMil;
+        if (dateMil == 0) {
+            URL = "https://api.darksky.net/forecast/" + key + "/" + latitude + "," + longitude;
+        } else {
+            URL = "https://api.darksky.net/forecast/" + key + "/" + latitude + "," + longitude + "," + dateMil;
+        }
         System.out.println(URL);
 
         parseJSON(URL);
@@ -140,8 +144,8 @@ public class PastData extends AppCompatActivity {
                             currentDate.setText(DateFormat.getDateInstance().format(dt));
                             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
                             currentLoc.setText(addresses.get(0).getLocality() + ", " + addresses.get(0).getAdminArea());
-                            String tempCurrMin = daily.getString("temperatureHigh");
-                            String tempCurrMax = daily.getString("temperatureLow");
+                            String tempCurrMin = daily.getString("temperatureLow");
+                            String tempCurrMax = daily.getString("temperatureHigh");
                             currentTemp.setText("Min: " + correctTempVal(tempCurrMin.substring(0, ((tempCurrMin.indexOf('.') == -1) ? tempCurrMin.length() : tempCurrMin.indexOf('.')))) + correctTempUnit() + "\n"
                                             + "Max: " + correctTempVal(tempCurrMax.substring(0, ((tempCurrMax.indexOf('.') == -1) ? tempCurrMax.length() : tempCurrMax.indexOf('.')))) + correctTempUnit());
                             String icon = daily.getString("icon").replaceAll("-", "_");

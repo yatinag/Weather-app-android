@@ -67,7 +67,7 @@
             android:layout_marginTop="10dp"
             android:showText="false"
             android:switchPadding="10dp"
-            android:text="@string/fahrenheit"
+            android:text="@string/celsius"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -486,42 +486,17 @@
 
         </GridLayout>
 
-        <CalendarView
-            android:id="@+id/calendarDate"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:calendarViewShown="false"
-            android:scaleX=".9"
-            android:scaleY=".9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainGrid"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/submitBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check Weather in Past"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarDate"
-            app:layout_constraintVertical_bias="0.0" />
-
         <EditText
             android:id="@+id/cityName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:hint="Enter City Name"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/submitBtn"
+            app:layout_constraintTop_toBottomOf="@+id/mainGrid"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
@@ -536,5 +511,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cityName"
             app:layout_constraintVertical_bias="0.0" />
+
+        <CalendarView
+            android:id="@+id/calendarDate"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:calendarViewShown="false"
+            android:scaleX=".9"
+            android:scaleY=".9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityBtn"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check Weather in Past"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarDate"
+            app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

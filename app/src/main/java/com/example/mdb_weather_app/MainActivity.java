@@ -78,13 +78,15 @@ public class MainActivity extends AppCompatActivity {
     Location userLoc;
     double latitude, longitude;
     String key;
-    boolean isFahren = true;
+    boolean isFahren = false;
     Switch tempSwitch;
     FlexboxLayout dataList;
     TextView currDesc;
     Button submitBtn, cityBtn;
+    TextView cityName;
     Calendar dateVal;
     CalendarView calendarView;
+    double userLat, userLon;
     Calendar currDateVal = Calendar.getInstance();
 
     @Override
@@ -128,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         currDesc = findViewById(R.id.currDesc);
         submitBtn = findViewById(R.id.submitBtn);
         calendarView = findViewById(R.id.calendarDate);
+        cityBtn = findViewById(R.id.cityBtn);
+        cityName = findViewById(R.id.cityName);
 
         cleanData.put("precipIntensity", "Precipitation Intensity");
         cleanData.put("precipProbability", "Precipitation Probability");
@@ -174,13 +178,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userCityInput = cityName.getText().toString();
+                checkValidCity(userCityInput);
+            }
+        });
+
         tempSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    isFahren = false;
-                } else {
                     isFahren = true;
+                } else {
+                    isFahren = false;
                 }
                 tempSwitch.setText(correctTempUnit());
                 dataList.removeAllViews();
@@ -199,24 +211,6 @@ public class MainActivity extends AppCompatActivity {
         dayFive.setPaintFlags(dayFive.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         daySix.setPaintFlags(daySix.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         daySeven.setPaintFlags(daySeven.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-        try {
-            String location = "New Delhi";
-            Geocoder gc = new Geocoder(this);
-            List<Address> addresses= gc.getFromLocationName(location, 5); // get the found Address Objects
-
-            double lat = 0, lon = 0;
-            for(Address a : addresses){
-                if(a.hasLatitude() && a.hasLongitude()){
-                    lat = a.getLatitude();
-                    lon = a.getLongitude();
-                }
-            }
-            System.out.println("BOOOMO: " + lat + " " + lon);
-
-        } catch (IOException e) {
-            // handle the exception
-        }
 
     }
 
@@ -346,4 +340,32 @@ public class MainActivity extends AppCompatActivity {
         return Integer.toString(((Integer.parseInt(val) - 32) * 5 / 9));
     }
 
+    private void checkValidCity(String city) {
+        try {
+            Geocoder gc = new Geocoder(this);
+            List<Address> addresses= gc.getFromLocationName(city, 5); // get the found Address Objects
+            double userLat = 0, userLon = 0;
+            for(Address a : addresses){
+                if(a.hasLatitude() && a.hasLongitude()){
+                    userLat = a.getLatitude();
+                    userLon = a.getLongitude();
+                }
+            }
+            if(userLat == 0 || userLon == 0) {
+                Toast toast = Toast.makeText(MainActivity.this, "Couldn't find City", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            } else {
+                Intent i = new Intent(MainActivity.this, PastData.class);
+                i.putExtra("DateMil", dateVal.getTimeInMillis() / 1000L);
+                i.putExtra("Lat", userLat);
+                i.putExtra("Lon", userLon);
+                startActivity(i);
+                finish();
+            }
+        } catch (IOException e) {
+            Toast toast = Toast.makeText(MainActivity.this, "Error Finding City", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 }
